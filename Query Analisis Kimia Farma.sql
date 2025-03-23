@@ -8,8 +8,8 @@ WITH calculation AS (SELECT DISTINCT
  END) AS persentase_gross_laba,
  A.transaction_id,
  (C.price * (1 - A.discount_percentage)) AS nett_sales
- FROM tabel-analisa-kf.tabel_analisa_kf.kf_product AS C
- JOIN tabel-analisa-kf.tabel_analisa_kf.kf_final_transaction AS A 
+ FROM kimia_farma.kf_product AS C
+ JOIN kimia_farma.kf_final_transaction AS A 
  ON A.product_id = C.product_id)
 
 SELECT 
@@ -31,10 +31,10 @@ D.nett_sales,
 A.rating AS rating_transaksi
 
 
-FROM tabel-analisa-kf.tabel_analisa_kf.kf_final_transaction AS A
-JOIN tabel-analisa-kf.tabel_analisa_kf.kf_kantor_cabang AS B 
+FROM kimia_farma.kf_final_transaction AS A
+JOIN kimia_farma.kf_kantor_cabang AS B 
 ON A.branch_id = B.branch_id
-JOIN tabel-analisa-kf.tabel_analisa_kf.kf_product AS C
+JOIN kimia_farma.kf_product AS C
 ON A.product_id = C.product_id
 JOIN calculation AS D
 ON A.transaction_id = D.transaction_id 
